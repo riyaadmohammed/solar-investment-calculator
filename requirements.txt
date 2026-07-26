@@ -1,0 +1,9 @@
+streamlit==1.50.0
+pandas==2.3.2
+numpy==2.3.3
+plotly==6.8.0
+folium==0.20.0
+streamlit-folium==0.27.2
+requests==2.32.5
+joblib==1.5.3
+scikit-learn==1.8.0
