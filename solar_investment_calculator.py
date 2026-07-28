@@ -118,21 +118,332 @@ st.markdown("""
         50% { opacity: 1; }
         100% { opacity: 0.6; }
     }
+    
+    /* ============================================ */
+    /* TAB STYLING - BALANCED FOR RESULTS WINDOW */
+    /* ============================================ */
+    
+    /* Tab container - fits all tabs without scrolling */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 24px;
-    }
-    .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        white-space: pre-wrap;
+        gap: 6px !important;
         background-color: #f8f9fa;
-        border-radius: 5px 5px 0px 0px;
-        gap: 1px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding: 8px 8px 0 8px !important;
+        border-radius: 8px 8px 0 0;
+        flex-wrap: nowrap !important;
+        overflow: visible !important;
+        white-space: nowrap !important;
+        justify-content: center !important;
+        width: 100% !important;
+        border-bottom: 2px solid #e0e0e0;
     }
+    
+    /* Individual tab styling - well-proportioned */
+    .stTabs [data-baseweb="tab"] {
+        height: 44px !important;
+        white-space: nowrap !important;
+        background-color: #f8f9fa;
+        border-radius: 6px 6px 0px 0px;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        color: #000000 !important;
+        font-weight: 500;
+        border: 1px solid #d0d0d0;
+        border-bottom: none;
+        flex-shrink: 1 !important;
+        flex-grow: 0 !important;
+        min-width: auto !important;
+        font-size: 13px !important;
+        transition: all 0.2s ease;
+        margin: 0 2px;
+        line-height: 1.3;
+        letter-spacing: 0.3px;
+    }
+    
+    .stTabs [data-baseweb="tab"]:hover {
+        background-color: #e8f0f8;
+        color: #000000 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
     .stTabs [aria-selected="true"] {
-        background-color: #1f77b4;
-        color: white;
+        background-color: #1f77b4 !important;
+        color: #ffffff !important;
+        font-weight: 600;
+        border: 1px solid #1f77b4;
+        border-bottom: none;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(31, 119, 180, 0.3);
+    }
+    
+    .stTabs [aria-selected="true"]:hover {
+        background-color: #1a6aa0 !important;
+        color: #ffffff !important;
+        transform: translateY(-2px);
+    }
+    
+    /* Ensure tab text is always visible */
+    .stTabs [role="tab"] {
+        color: #000000 !important;
+    }
+    
+    .stTabs [role="tab"][aria-selected="true"] {
+        color: #ffffff !important;
+    }
+    
+    /* Hide scrollbar on desktop */
+    .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {
+        display: none !important;
+    }
+    
+    .stTabs [data-baseweb="tab-list"] {
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+    }
+    
+    /* ============================================ */
+    /* RESPONSIVE BREAKPOINTS */
+    /* ============================================ */
+    
+    /* Large desktops - more spacing */
+    @media screen and (min-width: 1400px) {
+        .stTabs [data-baseweb="tab"] {
+            font-size: 14px !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            height: 48px !important;
+        }
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 8px !important;
+        }
+    }
+    
+    /* Standard desktops and laptops */
+    @media screen and (min-width: 1025px) and (max-width: 1399px) {
+        .stTabs [data-baseweb="tab"] {
+            font-size: 13px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            height: 44px !important;
+        }
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 6px !important;
+        }
+    }
+    
+    /* Tablets and small laptops */
+    @media screen and (max-width: 1024px) {
+        .main-header {
+            font-size: 2rem;
+        }
+        .sub-header {
+            font-size: 1rem;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+        }
+        .stTabs [data-baseweb="tab"] {
+            font-size: 12px !important;
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            height: 40px !important;
+        }
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 4px !important;
+            padding: 6px 6px 0 6px !important;
+        }
+    }
+    
+    /* Mobile phones - enable scrolling */
+    @media screen and (max-width: 768px) {
+        .main-header {
+            font-size: 1.5rem;
+        }
+        .sub-header {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Enable scrolling on mobile */
+        .stTabs [data-baseweb="tab-list"] {
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            justify-content: flex-start !important;
+            -webkit-overflow-scrolling: touch;
+            padding: 4px 4px 0 4px !important;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        /* Show scrollbar on mobile */
+        .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {
+            display: block !important;
+            height: 4px;
+        }
+        
+        .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 4px;
+        }
+        
+        .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar-thumb {
+            background: #1f77b4;
+            border-radius: 4px;
+        }
+        
+        .stTabs [data-baseweb="tab"] {
+            font-size: 11px !important;
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+            height: 36px !important;
+            flex-shrink: 0 !important;
+        }
+        
+        /* Stack metric cards on mobile */
+        .metric-card {
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+        .metric-value {
+            font-size: 1.2rem;
+        }
+        .metric-label {
+            font-size: 0.75rem;
+        }
+        
+        /* Adjust button sizes */
+        .stButton > button {
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+        
+        /* Adjust input sizes */
+        .stTextInput input, .stNumberInput input, .stSelectbox select {
+            font-size: 14px !important;
+            padding: 8px !important;
+        }
+    }
+    
+    /* Small mobile phones */
+    @media screen and (max-width: 480px) {
+        .main-header {
+            font-size: 1.2rem;
+        }
+        .sub-header {
+            font-size: 0.8rem;
+        }
+        
+        .stTabs [data-baseweb="tab"] {
+            font-size: 10px !important;
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+            height: 32px !important;
+        }
+        
+        .metric-value {
+            font-size: 1rem;
+        }
+    }
+    
+    /* ============================================ */
+    /* DARK MODE SUPPORT */
+    /* ============================================ */
+    
+    @media (prefers-color-scheme: dark) {
+        .stTabs [data-baseweb="tab-list"] {
+            background-color: #2d2d2d;
+            border-bottom: 2px solid #444444;
+        }
+        
+        .stTabs [data-baseweb="tab"] {
+            background-color: #2d2d2d;
+            color: #ffffff !important;
+            border-color: #444444;
+        }
+        
+        .stTabs [data-baseweb="tab"]:hover {
+            background-color: #3d3d3d;
+            color: #ffffff !important;
+        }
+        
+        .stTabs [aria-selected="true"] {
+            background-color: #1f77b4 !important;
+            color: #ffffff !important;
+        }
+        
+        .stTabs [role="tab"] {
+            color: #ffffff !important;
+        }
+        
+        .stTabs [role="tab"][aria-selected="true"] {
+            color: #ffffff !important;
+        }
+        
+        .metric-card {
+            background-color: #2d2d2d;
+        }
+        .metric-label {
+            color: #adb5bd;
+        }
+        
+        /* Dark mode scrollbar */
+        .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar-track {
+            background: #3d3d3d;
+        }
+    }
+    
+    /* ============================================ */
+    /* ADDITIONAL IMPROVEMENTS */
+    /* ============================================ */
+    
+    /* Make sure charts are responsive */
+    .js-plotly-plot {
+        width: 100% !important;
+    }
+    
+    /* Improve table scrolling on mobile */
+    .stDataFrame {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Better spacing for mobile */
+    @media screen and (max-width: 768px) {
+        .row-widget {
+            flex-wrap: wrap !important;
+        }
+        .row-widget > div {
+            flex: 1 1 100% !important;
+            margin-bottom: 8px;
+        }
+        /* Reduce padding on mobile */
+        .stApp {
+            padding: 8px !important;
+        }
+        /* Make sure sidebar is accessible */
+        .css-1d391kg {
+            padding: 1rem !important;
+        }
+    }
+    
+    /* Add a subtle indicator for the active tab */
+    .stTabs [aria-selected="true"]::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 20%;
+        width: 60%;
+        height: 3px;
+        background-color: #ffffff;
+        border-radius: 2px;
+    }
+    
+    /* Make tabs more visually appealing */
+    .stTabs [data-baseweb="tab"] {
+        position: relative;
+        cursor: pointer;
+        user-select: none;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -2844,7 +3155,7 @@ else:
     st.markdown("""
     <div style="text-align: center; color: #6c757d; font-size: 0.8rem;">
         <p>Data sourced from NASA POWER and Open-Meteo APIs</p>
-        <p>ML Models trained on PVDAQ data</p>
-        <p>© 2024 Solar Investment Calculator - Trinidad & Tobago</p>
+        <p>ML Models trained on TTMS data and validated against PVDAQ data</p>
+        <p>© 2026 Solar Investment Calculator - Trinidad & Tobago</p>
     </div>
     """, unsafe_allow_html=True)
